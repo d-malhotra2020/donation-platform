@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Donation Platform Recommender — Benchmark</title>
+<meta name="description" content="Real-data benchmark of six recommender models on a ProPublica nonprofit corpus + synthetic giving patterns. Fully reproducible." />
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-2: #14141a;
+    --fg: #e8e8e8;
+    --fg-dim: #9aa0a6;
+    --accent: #7cf26b;
+    --border: #2a2a30;
+    --warn: #f2c94c;
+    --bad: #f26b7c;
+    --good: #7cf26b;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--fg); margin: 0; padding: 0; }
+  body {
+    font: 14px/1.55 ui-sans-serif, system-ui, "Geist", "Inter", -apple-system, "Helvetica Neue", sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+  code, pre, .mono { font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace; }
+  h1 { font-size: 1.65rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 1.1rem; margin: 36px 0 10px; letter-spacing: -0.01em; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 0.95rem; margin: 24px 0 6px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+  .lede { color: var(--fg-dim); margin-bottom: 24px; }
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px 24px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 6px; margin: 12px 0 24px; font-size: 12px; }
+  .meta div { display: flex; flex-direction: column; }
+  .meta .k { color: var(--fg-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta .v { font-family: "JetBrains Mono", monospace; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: right; font-family: "JetBrains Mono", monospace; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { background: var(--bg-2); color: var(--fg-dim); font-weight: 500; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.05em; }
+  tbody tr.headline { background: rgba(124, 242, 107, 0.06); }
+  tbody tr.headline td:first-child::before { content: "▸ "; color: var(--accent); }
+  .invariants li { margin: 4px 0; }
+  .pass { color: var(--good); }
+  .fail { color: var(--bad); }
+  figure { margin: 16px 0; padding: 0; }
+  figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 4px; background: white; }
+  figcaption { color: var(--fg-dim); font-size: 12px; margin-top: 4px; }
+  .honesty { margin-top: 32px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-2); }
+  .honesty h3 { color: var(--warn); margin-top: 0; }
+  a { color: var(--accent); }
+  .footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 12px; }
+  .copy { font-family: "JetBrains Mono", monospace; background: var(--bg-2); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<h1>donation-platform · recommender benchmark</h1>
+<p class="lede">Six models, real US-nonprofit corpus from ProPublica, synthetic giving patterns. <span class="mono">make bench</span> reproduces every number on this page in ~1.5 min on a CPU laptop.</p>
+
+<div class="meta">
+  <div><span class="k">generated</span><span class="v">2026-05-25T22:23:50.333547+00:00</span></div>
+  <div><span class="k">git sha</span><span class="v">e0ea105</span></div>
+  <div><span class="k">corpus snapshot</span><span class="v">2026-05-24</span></div>
+  <div><span class="k">seed</span><span class="v">42</span></div>
+  <div><span class="k">runtime</span><span class="v">99.64s</span></div>
+  <div><span class="k">orgs</span><span class="v">3,000</span></div>
+  <div><span class="k">synthetic users</span><span class="v">8,000</span></div>
+  <div><span class="k">events (train/val/test)</span><span class="v">72,352 / 17,506 / 22,708</span></div>
+</div>
+
+<h2>Headline comparison</h2>
+<p>Metrics are mean-over-users. Higher is better for ranking metrics. <span class="mono">coverage@10</span> = fraction of org corpus appearing in any user's top-10; <span class="mono">diversity@10</span> = mean intra-list category entropy (higher = more diverse). The centerpiece <span class="mono">two-tower</span> row is highlighted.</p>
+<table><thead><tr><th>Model</th><th>ndcg@10</th><th>recall@10</th><th>mrr</th><th>map@10</th><th>coverage@10</th><th>diversity@10</th><th>cold_user_ndcg@10</th><th>cold_org_recall@10</th></tr></thead><tbody>
+<tr><td>random</td><td>0.0015</td><td>0.0026</td><td>0.0033</td><td>0.0007</td><td>1.0000</td><td>2.5559</td><td>0.0005</td><td>0.0000</td></tr>
+<tr><td>popularity</td><td>0.0064</td><td>0.0105</td><td>0.0119</td><td>0.0031</td><td>0.0033</td><td>2.9219</td><td>0.0074</td><td>0.0000</td></tr>
+<tr><td>category-match</td><td>0.0255</td><td>0.0392</td><td>0.0449</td><td>0.0129</td><td>0.0333</td><td>0.0000</td><td>0.0158</td><td>0.0000</td></tr>
+<tr><td>matrix-factorization</td><td>0.0212</td><td>0.0310</td><td>0.0406</td><td>0.0107</td><td>0.1493</td><td>1.1531</td><td>0.0085</td><td>0.0000</td></tr>
+<tr class="headline"><td>two-tower</td><td>0.0120</td><td>0.0193</td><td>0.0231</td><td>0.0059</td><td>0.9913</td><td>0.5621</td><td>0.0113</td><td>0.1667</td></tr>
+<tr><td>two-tower-content-init</td><td>0.0109</td><td>0.0178</td><td>0.0211</td><td>0.0053</td><td>0.9730</td><td>0.5146</td><td>0.0104</td><td>0.0833</td></tr>
+</tbody></table>
+
+<figure>
+  <img src="https://raw.githubusercontent.com/d-malhotra2020/donation-platform/master/bench/results/comparison_table.png" alt="Comparison heatmap of all six models" />
+  <figcaption>Heatmap of every metric × model. Generated by <span class="mono">bench/eval/run.py</span>.</figcaption>
+</figure>
+
+<h2>Invariant tests</h2>
+<p>Pass/fail assertions modeled on the deep-dive's "synthetic users with known preference profiles" pattern. They gate the build — a real failure here means the recommender is doing the wrong thing on at least one well-defined user archetype.</p>
+<ul class="invariants">
+<li><span class="pass">✅ PASS</span> · <strong>category-locked</strong> — score <span class="mono">0.9992</span>, threshold <span class="mono">0.4000</span>. <span class="mono" style="color:var(--fg-dim)">mean fraction of top-10 in the user's locked category</span></li>
+<li><span class="fail">❌ FAIL</span> · <strong>diversity-floor</strong> — score <span class="mono">1.0000</span>, threshold <span class="mono">0.9500</span>. <span class="mono" style="color:var(--fg-dim)">worst single-category share of any user's top-10; threshold=0.95</span></li>
+<li><span class="pass">✅ PASS</span> · <strong>beats-random</strong> — score <span class="mono">0.0105</span>, threshold <span class="mono">0.0015</span>. <span class="mono" style="color:var(--fg-dim)">two-tower ndcg@10=0.0120 vs random ndcg@10=0.0015; require >2x</span></li>
+</ul>
+
+<h2>Two-tower centerpiece</h2>
+<p>PyTorch user-tower + org-tower with in-batch sampled-softmax + popularity-weighted negative sampling. L2-normalized outputs, FAISS exact inner-product for top-K retrieval. The <span class="mono">two-tower-content-init</span> ablation initializes the org tower from <span class="mono">sentence-transformers/all-MiniLM-L6-v2</span> embeddings before fine-tuning.</p>
+
+<figure>
+  <img src="https://raw.githubusercontent.com/d-malhotra2020/donation-platform/master/bench/results/training_curves.png" alt="Two-tower BPR training loss per epoch" />
+  <figcaption>Sampled-softmax loss per epoch.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://raw.githubusercontent.com/d-malhotra2020/donation-platform/master/bench/results/calibration.png" alt="Two-tower calibration plot" />
+  <figcaption>Predicted-score decile vs observed positive rate. A well-calibrated ranker is monotonic and close to a straight line.</figcaption>
+</figure>
+
+<h2>Reproduce locally</h2>
+<div class="copy">git clone https://github.com/d-malhotra2020/donation-platform</div><br/>
+<div class="copy">cd donation-platform && make bench</div>
+<p>Fixed seeds, pinned dependencies (<span class="mono">bench/requirements.txt</span>), CPU-only by contract. Same git SHA → same metrics.json modulo runtime.</p>
+
+<div class="honesty">
+  <h3>What this is, and what it isn't</h3>
+  <ul>
+    <li>The <strong>org corpus</strong> is a sanitized snapshot of <a href="https://projects.propublica.org/nonprofits/api">ProPublica's Nonprofit Explorer</a> from 2026-05-24. ~3K orgs sampled per-category from the full 5K snapshot for the headline run. CSV + fetch script live in the repo at <span class="mono">bench/data/</span>.</li>
+    <li>The <strong>users and donations are synthetic</strong>, generated from the seeded process in <span class="mono">bench/data/synthetic_*.py</span>. Not real people, not real giving behavior.</li>
+    <li>All eval metrics are computed on the synthetic test split. They measure model quality <em>on this synthetic giving pattern</em>. They do <strong>not</strong> represent performance on any real production donation platform.</li>
+    <li>This is <strong>Slice 1</strong> of a four-slice rebuild. Slices 2–4 (FastAPI gateway, Redis embedding cache, web demo surface) are out of scope here and will land in follow-up cycles.</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/d-malhotra2020/donation-platform">github.com/d-malhotra2020/donation-platform</a> · <a href="https://drewmalhotra.com/work/donation-platform">deep-dive on drewmalhotra.com</a> · <a href="https://github.com/d-malhotra2020/donation-platform/blob/master/bench/results/REPORT.md">raw REPORT.md</a> · <a href="https://github.com/d-malhotra2020/donation-platform/blob/master/bench/results/metrics.json">metrics.json</a>
+</div>
+
+</body>
+</html>

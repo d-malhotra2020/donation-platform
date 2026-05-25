@@ -298,8 +298,13 @@ def run_benchmark(*, fast: bool, seed: int = DEFAULT_SEED) -> dict[str, Any]:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     (RESULTS_DIR / "metrics.json").write_text(json.dumps(metrics_summary, indent=2, default=str))
 
-    # REPORT.md
+    # REPORT.md + HTML landing pages
     _write_report(metrics_summary, RESULTS_DIR / "REPORT.md")
+    _write_html_report(metrics_summary, RESULTS_DIR / "index.html", image_prefix="")
+    docs_dir = BENCH_ROOT.parent / "docs"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    raw_prefix = "https://raw.githubusercontent.com/d-malhotra2020/donation-platform/master/bench/results/"
+    _write_html_report(metrics_summary, docs_dir / "index.html", image_prefix=raw_prefix)
 
     if not all_invariants_pass and not fast:
         # In fast mode we accept invariant violations because 1 epoch can't learn enough.
@@ -436,6 +441,173 @@ def _write_report(summary: dict[str, Any], out_path: Path) -> None:
     lines.append("")
     lines.append("See `bench/README.md` for the honesty footer and data provenance.")
     out_path.write_text("\n".join(lines))
+
+
+HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Donation Platform Recommender — Benchmark</title>
+<meta name="description" content="Real-data benchmark of six recommender models on a ProPublica nonprofit corpus + synthetic giving patterns. Fully reproducible." />
+<style>
+  :root {{
+    --bg: #0a0a0c;
+    --bg-2: #14141a;
+    --fg: #e8e8e8;
+    --fg-dim: #9aa0a6;
+    --accent: #7cf26b;
+    --border: #2a2a30;
+    --warn: #f2c94c;
+    --bad: #f26b7c;
+    --good: #7cf26b;
+  }}
+  * {{ box-sizing: border-box; }}
+  html, body {{ background: var(--bg); color: var(--fg); margin: 0; padding: 0; }}
+  body {{
+    font: 14px/1.55 ui-sans-serif, system-ui, "Geist", "Inter", -apple-system, "Helvetica Neue", sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }}
+  code, pre, .mono {{ font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace; }}
+  h1 {{ font-size: 1.65rem; margin: 0 0 8px; letter-spacing: -0.02em; }}
+  h2 {{ font-size: 1.1rem; margin: 36px 0 10px; letter-spacing: -0.01em; border-bottom: 1px solid var(--border); padding-bottom: 6px; }}
+  h3 {{ font-size: 0.95rem; margin: 24px 0 6px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; }}
+  .lede {{ color: var(--fg-dim); margin-bottom: 24px; }}
+  .meta {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px 24px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 6px; margin: 12px 0 24px; font-size: 12px; }}
+  .meta div {{ display: flex; flex-direction: column; }}
+  .meta .k {{ color: var(--fg-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }}
+  .meta .v {{ font-family: "JetBrains Mono", monospace; }}
+  table {{ width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }}
+  th, td {{ border: 1px solid var(--border); padding: 6px 10px; text-align: right; font-family: "JetBrains Mono", monospace; }}
+  th:first-child, td:first-child {{ text-align: left; }}
+  thead th {{ background: var(--bg-2); color: var(--fg-dim); font-weight: 500; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.05em; }}
+  tbody tr.headline {{ background: rgba(124, 242, 107, 0.06); }}
+  tbody tr.headline td:first-child::before {{ content: "▸ "; color: var(--accent); }}
+  .invariants li {{ margin: 4px 0; }}
+  .pass {{ color: var(--good); }}
+  .fail {{ color: var(--bad); }}
+  figure {{ margin: 16px 0; padding: 0; }}
+  figure img {{ max-width: 100%; border: 1px solid var(--border); border-radius: 4px; background: white; }}
+  figcaption {{ color: var(--fg-dim); font-size: 12px; margin-top: 4px; }}
+  .honesty {{ margin-top: 32px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-2); }}
+  .honesty h3 {{ color: var(--warn); margin-top: 0; }}
+  a {{ color: var(--accent); }}
+  .footer {{ margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 12px; }}
+  .copy {{ font-family: "JetBrains Mono", monospace; background: var(--bg-2); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; margin: 4px 0; }}
+</style>
+</head>
+<body>
+
+<h1>donation-platform · recommender benchmark</h1>
+<p class="lede">Six models, real US-nonprofit corpus from ProPublica, synthetic giving patterns. <span class="mono">make bench</span> reproduces every number on this page in ~1.5 min on a CPU laptop.</p>
+
+<div class="meta">
+  <div><span class="k">generated</span><span class="v">{generated_at}</span></div>
+  <div><span class="k">git sha</span><span class="v">{git_sha}</span></div>
+  <div><span class="k">corpus snapshot</span><span class="v">{dataset_snapshot_date}</span></div>
+  <div><span class="k">seed</span><span class="v">{seed}</span></div>
+  <div><span class="k">runtime</span><span class="v">{runtime_seconds}s</span></div>
+  <div><span class="k">orgs</span><span class="v">{n_orgs:,}</span></div>
+  <div><span class="k">synthetic users</span><span class="v">{n_users:,}</span></div>
+  <div><span class="k">events (train/val/test)</span><span class="v">{n_train:,} / {n_val:,} / {n_test:,}</span></div>
+</div>
+
+<h2>Headline comparison</h2>
+<p>Metrics are mean-over-users. Higher is better for ranking metrics. <span class="mono">coverage@10</span> = fraction of org corpus appearing in any user's top-10; <span class="mono">diversity@10</span> = mean intra-list category entropy (higher = more diverse). The centerpiece <span class="mono">two-tower</span> row is highlighted.</p>
+{comparison_table_html}
+
+<figure>
+  <img src="{image_prefix}comparison_table.png" alt="Comparison heatmap of all six models" />
+  <figcaption>Heatmap of every metric × model. Generated by <span class="mono">bench/eval/run.py</span>.</figcaption>
+</figure>
+
+<h2>Invariant tests</h2>
+<p>Pass/fail assertions modeled on the deep-dive's "synthetic users with known preference profiles" pattern. They gate the build — a real failure here means the recommender is doing the wrong thing on at least one well-defined user archetype.</p>
+<ul class="invariants">
+{invariants_html}
+</ul>
+
+<h2>Two-tower centerpiece</h2>
+<p>PyTorch user-tower + org-tower with in-batch sampled-softmax + popularity-weighted negative sampling. L2-normalized outputs, FAISS exact inner-product for top-K retrieval. The <span class="mono">two-tower-content-init</span> ablation initializes the org tower from <span class="mono">sentence-transformers/all-MiniLM-L6-v2</span> embeddings before fine-tuning.</p>
+
+<figure>
+  <img src="{image_prefix}training_curves.png" alt="Two-tower BPR training loss per epoch" />
+  <figcaption>Sampled-softmax loss per epoch.</figcaption>
+</figure>
+
+<figure>
+  <img src="{image_prefix}calibration.png" alt="Two-tower calibration plot" />
+  <figcaption>Predicted-score decile vs observed positive rate. A well-calibrated ranker is monotonic and close to a straight line.</figcaption>
+</figure>
+
+<h2>Reproduce locally</h2>
+<div class="copy">git clone https://github.com/d-malhotra2020/donation-platform</div><br/>
+<div class="copy">cd donation-platform && make bench</div>
+<p>Fixed seeds, pinned dependencies (<span class="mono">bench/requirements.txt</span>), CPU-only by contract. Same git SHA → same metrics.json modulo runtime.</p>
+
+<div class="honesty">
+  <h3>What this is, and what it isn't</h3>
+  <ul>
+    <li>The <strong>org corpus</strong> is a sanitized snapshot of <a href="https://projects.propublica.org/nonprofits/api">ProPublica's Nonprofit Explorer</a> from {dataset_snapshot_date}. ~3K orgs sampled per-category from the full 5K snapshot for the headline run. CSV + fetch script live in the repo at <span class="mono">bench/data/</span>.</li>
+    <li>The <strong>users and donations are synthetic</strong>, generated from the seeded process in <span class="mono">bench/data/synthetic_*.py</span>. Not real people, not real giving behavior.</li>
+    <li>All eval metrics are computed on the synthetic test split. They measure model quality <em>on this synthetic giving pattern</em>. They do <strong>not</strong> represent performance on any real production donation platform.</li>
+    <li>This is <strong>Slice 1</strong> of a four-slice rebuild. Slices 2–4 (FastAPI gateway, Redis embedding cache, web demo surface) are out of scope here and will land in follow-up cycles.</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/d-malhotra2020/donation-platform">github.com/d-malhotra2020/donation-platform</a> · <a href="https://drewmalhotra.com/work/donation-platform">deep-dive on drewmalhotra.com</a> · <a href="https://github.com/d-malhotra2020/donation-platform/blob/master/bench/results/REPORT.md">raw REPORT.md</a> · <a href="https://github.com/d-malhotra2020/donation-platform/blob/master/bench/results/metrics.json">metrics.json</a>
+</div>
+
+</body>
+</html>
+"""
+
+
+def _write_html_report(summary: dict[str, Any], out_path: Path, *, image_prefix: str) -> None:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    metric_keys = ["ndcg@10", "recall@10", "mrr", "map@10", "coverage@10", "diversity@10", "cold_user_ndcg@10", "cold_org_recall@10"]
+    rows: list[str] = []
+    rows.append("<table><thead><tr><th>Model</th>" + "".join(f"<th>{k}</th>" for k in metric_keys) + "</tr></thead><tbody>")
+    for name, row in summary["models"].items():
+        highlight = ' class="headline"' if name == "two-tower" else ""
+        cells = "".join(
+            f"<td>{(f'{row.get(k):.4f}' if isinstance(row.get(k), float) else (row.get(k) if row.get(k) is not None else '—'))}</td>"
+            for k in metric_keys
+        )
+        rows.append(f"<tr{highlight}><td>{name}</td>{cells}</tr>")
+    rows.append("</tbody></table>")
+    comparison_table_html = "\n".join(rows)
+
+    inv_rows: list[str] = []
+    for inv in summary["invariants"]:
+        css = "pass" if inv["passed"] else "fail"
+        status = "✅ PASS" if inv["passed"] else "❌ FAIL"
+        inv_rows.append(
+            f"<li><span class=\"{css}\">{status}</span> · <strong>{inv['name']}</strong> — "
+            f"score <span class=\"mono\">{inv['score']:.4f}</span>, threshold <span class=\"mono\">{inv['threshold']:.4f}</span>. "
+            f"<span class=\"mono\" style=\"color:var(--fg-dim)\">{inv['notes']}</span></li>"
+        )
+    invariants_html = "\n".join(inv_rows)
+
+    html = HTML_TEMPLATE.format(
+        generated_at=summary["generated_at"],
+        git_sha=summary["git_sha"],
+        dataset_snapshot_date=summary["dataset_snapshot_date"],
+        seed=summary["seed"],
+        runtime_seconds=summary["runtime_seconds"],
+        n_orgs=summary["n_orgs"],
+        n_users=summary["n_users"],
+        n_train=summary["n_train"],
+        n_val=summary["n_val"],
+        n_test=summary["n_test"],
+        comparison_table_html=comparison_table_html,
+        invariants_html=invariants_html,
+        image_prefix=image_prefix,
+    )
+    out_path.write_text(html)
 
 
 def main() -> int:
