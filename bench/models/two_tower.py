@@ -307,6 +307,110 @@ class TwoTowerRecommender(Recommender):
         idx = idx[np.argsort(-scores[idx])]
         return [self.index_org[i] for i in idx]
 
+    # ---- persistence ----------------------------------------------------
+
+    def save_artifacts(self, out_dir: Path) -> None:
+        """Persist the trained model so the live service can load without retraining.
+
+        Writes:
+          - two_tower.pt           — torch state dict for user_tower + org_tower
+          - two_tower_meta.json    — config + index mappings + popularity fallback
+          - two_tower_org_embs.npy — precomputed org embeddings (so we don't need
+                                     to forward-pass at boot to populate FAISS)
+        """
+        if self.user_tower is None or self.org_tower is None or self.org_embeddings is None:
+            return
+        out_dir.mkdir(parents=True, exist_ok=True)
+        torch.save(
+            {
+                "user_tower": self.user_tower.state_dict(),
+                "org_tower": self.org_tower.state_dict(),
+            },
+            out_dir / "two_tower.pt",
+        )
+        np.save(out_dir / "two_tower_org_embs.npy", self.org_embeddings)
+        meta = {
+            "config": {
+                "embed_dim": self.cfg.embed_dim,
+                "hidden_dim": self.cfg.hidden_dim,
+                "dropout": self.cfg.dropout,
+                "content_init": self.cfg.content_init,
+            },
+            "index_org": self.index_org,
+            "user_index": self.user_index,
+            "org_index": self.org_index,
+            "cat_index": self.cat_index,
+            "org_cat_idx": self.org_cat_idx.tolist() if self.org_cat_idx is not None else None,
+            "popularity_fallback": self.popularity_fallback,
+            "training_log": self.training_log,
+        }
+        import json
+        (out_dir / "two_tower_meta.json").write_text(json.dumps(meta))
+
+    @classmethod
+    def load_artifacts(cls, in_dir: Path) -> "TwoTowerRecommender":
+        """Load a model previously saved by `save_artifacts`. Skips training."""
+        import json
+
+        meta = json.loads((in_dir / "two_tower_meta.json").read_text())
+        cfg_dict = meta["config"]
+        cfg = TwoTowerConfig(
+            embed_dim=int(cfg_dict["embed_dim"]),
+            hidden_dim=int(cfg_dict["hidden_dim"]),
+            dropout=float(cfg_dict["dropout"]),
+            content_init=bool(cfg_dict.get("content_init", False)),
+        )
+        inst = cls(cfg)
+        inst.index_org = list(meta["index_org"])
+        inst.user_index = {k: int(v) for k, v in meta["user_index"].items()}
+        inst.org_index = {k: int(v) for k, v in meta["org_index"].items()}
+        inst.cat_index = {k: int(v) for k, v in meta["cat_index"].items()}
+        inst.popularity_fallback = list(meta["popularity_fallback"])
+        inst.training_log = list(meta.get("training_log", []))
+        if meta.get("org_cat_idx") is not None:
+            inst.org_cat_idx = torch.tensor(meta["org_cat_idx"], dtype=torch.long)
+
+        # Reinstantiate towers with the saved shapes.
+        n_users = len(inst.user_index)
+        n_orgs = len(inst.index_org)
+        n_cats = len(inst.cat_index)
+        inst.user_tower = _UserTower(n_users, cfg.embed_dim, cfg.hidden_dim, cfg.dropout)
+        # Note: content_init dim isn't recoverable from meta alone — we infer from saved weights below.
+        sd = torch.load(in_dir / "two_tower.pt", map_location="cpu")
+        # Probe org_tower input dim from saved MLP first-layer weight shape.
+        try:
+            first_w = sd["org_tower"]["mlp.0.weight"]
+            content_dim = int(first_w.shape[1] - cfg.embed_dim * 2)
+        except KeyError:
+            content_dim = 0
+        inst.org_tower = _OrgTower(
+            n_orgs=n_orgs,
+            n_categories=n_cats,
+            embed_dim=cfg.embed_dim,
+            hidden_dim=cfg.hidden_dim,
+            dropout=cfg.dropout,
+            content_dim=content_dim,
+        )
+        # If the org_tower was content-init, the saved state_dict has no content_buf
+        # (it's a non-persistent buffer). Set a zero placeholder so forward() works.
+        if content_dim > 0:
+            inst.org_tower.set_content(torch.zeros(n_orgs, content_dim))
+        inst.user_tower.load_state_dict(sd["user_tower"])
+        inst.org_tower.load_state_dict(sd["org_tower"])
+        inst.user_tower.eval()
+        inst.org_tower.eval()
+
+        org_embs = np.load(in_dir / "two_tower_org_embs.npy")
+        inst.org_embeddings = org_embs.astype(np.float32)
+        try:
+            import faiss
+            index = faiss.IndexFlatIP(org_embs.shape[1])
+            index.add(inst.org_embeddings)
+            inst.faiss_index = index
+        except Exception:
+            inst.faiss_index = None
+        return inst
+
     # ---- content init ---------------------------------------------------
 
     def _compute_content_embeddings(self, orgs: pd.DataFrame) -> torch.Tensor:

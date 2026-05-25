@@ -1,0 +1,201 @@
+user_id,primary_categories,verified_preference,avg_donation,is_category_locked
+user_0000291,Health,0.2773434597975316,29.321282277115778,True
+user_0000011,Education,0.6875829182477374,49.916700790911946,True
+user_0000297,"Arts, Culture & Humanities",0.04452522721122125,73.14447551272302,True
+user_0000230,Health,0.3621407186150916,21.328851547378356,True
+user_0000097,International,0.28539898808737185,91.70087336661213,True
+user_0000115,Mutual & Membership Benefit,0.646022592687674,22.795960677206097,True
+user_0000003,Public & Societal Benefit,0.27493300723417763,31.978118189192216,True
+user_0000051,Environment & Animals,0.22922722555117514,39.757973088748486,True
+user_0000263,Religion,0.6213931070244737,24.33726237299551,True
+user_0000102,Mutual & Membership Benefit,0.6642019260518663,31.15684861393272,True
+user_0000393,Religion,0.21368644846844667,19.673987879688273,True
+user_0000179,Education,0.34002693726079036,71.75628529847134,True
+user_0000286,Human Services,0.1694365638919344,21.234575759829394,True
+user_0000219,Human Services,0.5342547336294197,14.018811179891273,True
+user_0000222,Public & Societal Benefit,0.17194948069665528,20.09582763242297,True
+user_0000354,Mutual & Membership Benefit,0.254137077949754,25.38672679737514,True
+user_0000305,Human Services,0.45688749533760187,20.306147948665803,True
+user_0000000,"Arts, Culture & Humanities",0.6068075915054164,15.9907611226989,True
+user_0000377,International,0.24150830888965816,26.062382117716844,True
+user_0000376,Public & Societal Benefit,0.5700108605600811,29.341128719033957,True
+user_0000306,Environment & Animals,0.7866302763153072,10.691664044611203,True
+user_0000120,Education,0.7659960530532385,15.292790551360099,True
+user_0000056,Other / Unknown,0.13942503303507328,31.72398304983115,True
+user_0000302,Other / Unknown,0.38325898100786254,25.281148841705285,True
+user_0000188,Other / Unknown,0.3342238832888454,7.198358074859589,True
+user_0000253,Other / Unknown,0.8249173211057435,5.0,True
+user_0000249,"Arts, Culture & Humanities",0.8133689134816445,27.72199455471755,True
+user_0000122,Religion,0.10972835252960356,31.277173840274568,True
+user_0000162,Education,0.21466430404402834,15.214159942315195,True
+user_0000094,Other / Unknown,0.4570609765468205,11.104263713575833,True
+user_0006826,International|Environment & Animals|Other / Unknown|Education|Human Services,0.7861469348612532,33.98845586509231,False
+user_0007080,Mutual & Membership Benefit|Human Services|Public & Societal Benefit|Religion|International|Other / Unknown,0.8537582933047451,46.90643188114503,False
+user_0006800,"Environment & Animals|Other / Unknown|Public & Societal Benefit|Arts, Culture & Humanities|Human Services",0.6653929466997933,52.97613375682448,False
+user_0005095,"Arts, Culture & Humanities|Religion|Human Services|Other / Unknown|International|Health|Public & Societal Benefit|Education",0.25489998474660064,23.074168778017732,False
+user_0005875,Health|International|Environment & Animals|Mutual & Membership Benefit|Human Services,0.5209804175551722,17.573163055516922,False
+user_0007714,"Human Services|Education|Health|Arts, Culture & Humanities|Mutual & Membership Benefit|International|Environment & Animals|Religion|Public & Societal Benefit",0.35613674746654134,49.97965396400391,False
+user_0007911,"International|Public & Societal Benefit|Mutual & Membership Benefit|Arts, Culture & Humanities|Health",0.7979880208034039,6.551075425339607,False
+user_0003417,Environment & Animals|Human Services|International,0.22110396098778753,31.397876625817617,False
+user_0005044,"Environment & Animals|Religion|Arts, Culture & Humanities|Health|Public & Societal Benefit|International|Human Services|Other / Unknown|Education",0.1617734482882383,12.383822176289627,False
+user_0006123,"Human Services|Education|Other / Unknown|Arts, Culture & Humanities|International|Health",0.8164505287358695,25.647912736916645,False
+user_0006164,Health|Human Services|Environment & Animals|International|Other / Unknown|Mutual & Membership Benefit|Religion,0.4537125874244512,67.65280898615669,False
+user_0001787,Human Services|Public & Societal Benefit,0.4964138047691462,138.25186757924857,False
+user_0006832,"Religion|Education|Arts, Culture & Humanities|Human Services|International|Environment & Animals|Other / Unknown",0.2825064697844863,58.3525110312145,False
+user_0004123,Religion|Human Services,0.35774433967973224,90.76681198831783,False
+user_0004589,Human Services|International|Public & Societal Benefit,0.2996982911566578,24.67587684657162,False
+user_0007479,Mutual & Membership Benefit|International|Religion|Other / Unknown|Human Services,0.3544420198971649,21.816175044080417,False
+user_0007875,"Education|Health|International|Human Services|Other / Unknown|Mutual & Membership Benefit|Arts, Culture & Humanities|Public & Societal Benefit",0.4361276027001628,40.96119751509583,False
+user_0003516,Human Services|Environment & Animals,0.48604187377545227,50.09098281368137,False
+user_0007343,"Human Services|Health|Education|Mutual & Membership Benefit|Arts, Culture & Humanities|Environment & Animals|Religion|Other / Unknown|International",0.8216737749026283,22.136199377571785,False
+user_0003706,Other / Unknown|Environment & Animals|Mutual & Membership Benefit,0.11832287085713993,27.70401385617902,False
+user_0001668,Human Services|Religion|Health,0.49691642178486206,13.568459696145636,False
+user_0004766,Public & Societal Benefit|Mutual & Membership Benefit,0.4537119152189049,89.09030716586197,False
+user_0006360,"Other / Unknown|Arts, Culture & Humanities|Health|Human Services|Public & Societal Benefit|Mutual & Membership Benefit|Environment & Animals|Religion|Education",0.6695168611352156,27.222243903186474,False
+user_0005846,"Other / Unknown|International|Public & Societal Benefit|Education|Arts, Culture & Humanities|Environment & Animals|Mutual & Membership Benefit|Health|Human Services",0.23275420739723612,13.501038988440179,False
+user_0002797,Mutual & Membership Benefit|Other / Unknown,0.4801391850560525,30.184308092199796,False
+user_0007456,Mutual & Membership Benefit|International|Health|Other / Unknown|Religion|Human Services,0.31456439979611917,110.19210992369278,False
+user_0006385,Mutual & Membership Benefit|International|Health|Other / Unknown|Human Services,0.8627139158194899,14.739686550860574,False
+user_0005836,"Public & Societal Benefit|Other / Unknown|Mutual & Membership Benefit|International|Arts, Culture & Humanities|Religion|Human Services",0.6708876512044746,85.51579434432307,False
+user_0007663,"Human Services|Other / Unknown|Education|Health|Religion|Environment & Animals|Arts, Culture & Humanities|Mutual & Membership Benefit|International",0.08090326633649281,60.980365234454425,False
+user_0007214,"Education|Mutual & Membership Benefit|Arts, Culture & Humanities|Health|Environment & Animals|Human Services|Public & Societal Benefit|International",0.7907982116873075,11.894022557632658,False
+user_0007624,Human Services|International|Health|Public & Societal Benefit|Education|Environment & Animals|Religion|Other / Unknown,0.4307005419177805,59.41132933537476,False
+user_0006543,"International|Education|Mutual & Membership Benefit|Public & Societal Benefit|Human Services|Health|Other / Unknown|Religion|Arts, Culture & Humanities",0.3609943021485184,22.74942819443398,False
+user_0005935,"Environment & Animals|Arts, Culture & Humanities|Health|Mutual & Membership Benefit|Education|Public & Societal Benefit|International|Religion|Other / Unknown",0.58714762758325,25.104767900580203,False
+user_0002958,Public & Societal Benefit|Mutual & Membership Benefit|Other / Unknown,0.15696799610565543,30.175181355808622,False
+user_0001741,Health|Education|Mutual & Membership Benefit,0.13646608793672477,20.749259515041416,False
+user_0001717,Public & Societal Benefit|Human Services,0.5622705542972019,22.828275468842378,False
+user_0006623,"Environment & Animals|International|Arts, Culture & Humanities|Other / Unknown|Human Services|Mutual & Membership Benefit",0.601925646803305,74.79646074252695,False
+user_0004824,Health|International|Environment & Animals|Human Services|Public & Societal Benefit|Mutual & Membership Benefit|Religion|Other / Unknown|Education,0.9493866756613021,22.646151813151807,False
+user_0001551,Other / Unknown|Mutual & Membership Benefit,0.7487534518598911,17.79040169374503,False
+user_0002098,Education|Other / Unknown|Health,0.636867490779422,43.816248359884426,False
+user_0005106,International|Education|Other / Unknown|Human Services|Environment & Animals,0.8573039414827285,36.399360266296526,False
+user_0000969,Other / Unknown|Human Services,0.6873399203565453,24.864551366349538,False
+user_0002243,"Mutual & Membership Benefit|Arts, Culture & Humanities|Other / Unknown",0.18271617801116302,45.74259337442672,False
+user_0005297,Human Services|Public & Societal Benefit|Mutual & Membership Benefit|Environment & Animals|International|Other / Unknown,0.654188381272963,21.418009563394943,False
+user_0004396,Public & Societal Benefit|Education,0.6250805662386287,27.49309950074814,False
+user_0005334,"Mutual & Membership Benefit|Environment & Animals|Arts, Culture & Humanities|Other / Unknown|Religion|International|Public & Societal Benefit|Education",0.1808100350049709,20.474176485609398,False
+user_0005341,"International|Other / Unknown|Environment & Animals|Arts, Culture & Humanities|Education|Mutual & Membership Benefit",0.39396829684697776,34.83186068152036,False
+user_0005630,"Education|Religion|Health|Human Services|Arts, Culture & Humanities|Other / Unknown|Environment & Animals|International|Public & Societal Benefit",0.6501410115167898,12.950742487827007,False
+user_0007524,"Environment & Animals|Arts, Culture & Humanities|Public & Societal Benefit|International|Education|Health",0.16506986737987817,62.44418504393444,False
+user_0003418,"Arts, Culture & Humanities|Health",0.6940328754119057,6.386778780831567,False
+user_0001584,"International|Arts, Culture & Humanities|Human Services",0.47397791282940827,48.71472732943921,False
+user_0003669,Environment & Animals|Religion,0.8753089538864153,5.800098380937166,False
+user_0006378,"Other / Unknown|Education|International|Human Services|Environment & Animals|Public & Societal Benefit|Religion|Arts, Culture & Humanities|Mutual & Membership Benefit",0.5300738825347961,20.59533875569498,False
+user_0000742,"Environment & Animals|Arts, Culture & Humanities",0.5486177670279924,43.36797068642541,False
+user_0003189,"Arts, Culture & Humanities|Public & Societal Benefit|Religion",0.5905427621874062,40.1098178333935,False
+user_0002342,"Public & Societal Benefit|Arts, Culture & Humanities",0.2981551906625347,13.000996365862434,False
+user_0007855,"Public & Societal Benefit|Mutual & Membership Benefit|Arts, Culture & Humanities|Human Services|Health|Other / Unknown|International|Education|Environment & Animals",0.32426380977670144,32.26842154907242,False
+user_0005944,"Education|Environment & Animals|Mutual & Membership Benefit|Arts, Culture & Humanities|Human Services|Public & Societal Benefit|Religion|Other / Unknown|International",0.7872996653738746,92.10783118095516,False
+user_0002515,Other / Unknown|Health,0.847372046122372,47.82265202253397,False
+user_0003986,Education|Mutual & Membership Benefit,0.42559493229857254,90.02279227783217,False
+user_0001589,Education|Health,0.24848204224450038,17.80166615297467,False
+user_0003196,Human Services|Religion|Public & Societal Benefit,0.3843586603558167,16.483895378361613,False
+user_0000831,Education|Human Services,0.6399120353823766,37.58497604441672,False
+user_0001256,Other / Unknown|International,0.6572440912520723,43.5387517471882,False
+user_0003236,Education|Human Services|International,0.465225436671556,21.9035006477912,False
+user_0005358,"Health|Education|Mutual & Membership Benefit|Human Services|Arts, Culture & Humanities|International|Environment & Animals",0.6863963445732155,16.77031710880737,False
+user_0000965,Religion|Health,0.8137701754420558,23.212171800045716,False
+user_0000728,Environment & Animals|Mutual & Membership Benefit,0.4993538429032272,26.546982352165543,False
+user_0006226,"Other / Unknown|Mutual & Membership Benefit|Human Services|Environment & Animals|Religion|Public & Societal Benefit|Arts, Culture & Humanities|Education",0.6379086043928888,20.880739641747695,False
+user_0006835,"International|Public & Societal Benefit|Other / Unknown|Arts, Culture & Humanities|Human Services|Religion|Environment & Animals|Mutual & Membership Benefit|Education",0.3049156561683984,23.281181796330486,False
+user_0002516,Environment & Animals|Human Services,0.8941776128954678,19.61261600508181,False
+user_0002214,Mutual & Membership Benefit|Human Services,0.8282815083519901,52.960101065592035,False
+user_0002028,Education|International,0.3906457624563158,24.618289273888475,False
+user_0001458,Human Services|International|Public & Societal Benefit,0.6133177897497047,27.96393313679348,False
+user_0006476,"Religion|Mutual & Membership Benefit|Arts, Culture & Humanities|Health|Human Services",0.7123215950073933,10.855085107975038,False
+user_0005011,Human Services|Other / Unknown|Environment & Animals|Mutual & Membership Benefit|Education,0.5981443147992532,52.499191135929244,False
+user_0007060,"Public & Societal Benefit|Education|Mutual & Membership Benefit|Other / Unknown|Human Services|Arts, Culture & Humanities",0.3791809013643059,85.25241958484477,False
+user_0000921,"Other / Unknown|Public & Societal Benefit|Arts, Culture & Humanities",0.8530762777119206,17.028135445011923,False
+user_0000615,International|Environment & Animals,0.06677822499984021,137.82565651663413,False
+user_0004330,Environment & Animals|Human Services,0.2827484306377522,33.35128773865129,False
+user_0003621,Religion|Other / Unknown|Health,0.5137071420621272,68.1947532309174,False
+user_0005795,"Education|Other / Unknown|Arts, Culture & Humanities|Human Services|International",0.8309274622553138,12.689073309994509,False
+user_0002762,Environment & Animals|Other / Unknown,0.7706267586880933,76.09875171692228,False
+user_0001856,Human Services|International,0.20892023278408006,18.169190455957587,False
+user_0000688,"Health|Arts, Culture & Humanities",0.5814698677093021,17.981265749363445,False
+user_0006819,"Mutual & Membership Benefit|Other / Unknown|Religion|Arts, Culture & Humanities|Education",0.7807879009836325,54.24557647554038,False
+user_0000685,Public & Societal Benefit|Other / Unknown|Environment & Animals,0.446143633103702,68.4060978009249,False
+user_0004897,"Education|Arts, Culture & Humanities|Human Services|Mutual & Membership Benefit|Other / Unknown|Religion|Health|Public & Societal Benefit",0.5928808723028437,103.22749975731736,False
+user_0002872,Other / Unknown|Human Services,0.5509982101678133,37.698928659930665,False
+user_0003685,Health|Mutual & Membership Benefit|Religion,0.16531181497601358,66.73856807261525,False
+user_0005090,Human Services|Religion|Education|Public & Societal Benefit|Mutual & Membership Benefit|International,0.23166379302336834,18.45376723774231,False
+user_0007202,"Human Services|Public & Societal Benefit|Religion|Health|Arts, Culture & Humanities|International|Education|Mutual & Membership Benefit|Environment & Animals",0.4458251924828832,83.4425780554696,False
+user_0002628,Health|International,0.5624771740618604,83.7896009701674,False
+user_0001852,"Mutual & Membership Benefit|Education|Arts, Culture & Humanities",0.7083245769943973,25.955054632288704,False
+user_0004702,International|Public & Societal Benefit,0.3572379883385166,63.054589278961615,False
+user_0004587,"Arts, Culture & Humanities|Other / Unknown",0.6569544117849678,13.173504541481655,False
+user_0005036,"Education|Mutual & Membership Benefit|Religion|Other / Unknown|International|Arts, Culture & Humanities|Health",0.6529409254939883,37.760766093401244,False
+user_0006206,"Other / Unknown|Arts, Culture & Humanities|International|Human Services|Mutual & Membership Benefit|Education",0.5105197460313207,12.57865718110377,False
+user_0003158,Other / Unknown|Environment & Animals|Public & Societal Benefit,0.34198174087835664,17.580545094436037,False
+user_0006872,"Education|Health|Arts, Culture & Humanities|Religion|Environment & Animals",0.1429950981509547,52.36880946897315,False
+user_0000794,Mutual & Membership Benefit|Public & Societal Benefit,0.3034886297951166,11.579199219950237,False
+user_0004554,Education|Other / Unknown|Human Services,0.3989755050848798,26.446198538489075,False
+user_0002559,"International|Arts, Culture & Humanities|Other / Unknown",0.40319713419792713,118.94184794991898,False
+user_0000534,"Environment & Animals|Health|Arts, Culture & Humanities",0.8453556831047555,12.837039925884474,False
+user_0007527,"Environment & Animals|Arts, Culture & Humanities|International|Education|Human Services|Health|Religion|Other / Unknown",0.4521410115794619,67.92339916572179,False
+user_0006887,"Education|Mutual & Membership Benefit|International|Health|Environment & Animals|Arts, Culture & Humanities|Other / Unknown|Public & Societal Benefit|Religion",0.38316957842710364,54.51382334481334,False
+user_0003176,Mutual & Membership Benefit|Religion|Education,0.33922141273801715,29.12582576399441,False
+user_0002861,Education|Public & Societal Benefit,0.5102134791021694,37.0946327360368,False
+user_0007012,"Mutual & Membership Benefit|Health|International|Public & Societal Benefit|Education|Human Services|Arts, Culture & Humanities",0.22680181936029611,33.50773954096242,False
+user_0004633,"Health|Arts, Culture & Humanities|Education",0.4062976638227081,32.550372640692565,False
+user_0004471,Public & Societal Benefit|Environment & Animals|Religion,0.5466646077756562,17.954058120473885,False
+user_0002839,Public & Societal Benefit|Education|International,0.23167150651108534,33.000276880823286,False
+user_0004891,"Arts, Culture & Humanities|Human Services|Health|Public & Societal Benefit|Environment & Animals|Religion",0.6173703534303409,42.939258659277364,False
+user_0007458,"Arts, Culture & Humanities|Education|Human Services|International|Health|Public & Societal Benefit|Religion",0.5231373566131561,30.185590761573874,False
+user_0001642,International|Human Services|Mutual & Membership Benefit,0.646513046939345,63.43420846311022,False
+user_0002753,International|Religion|Environment & Animals,0.9044079270696083,12.60407373119932,False
+user_0001149,Religion|Public & Societal Benefit,0.4264079472313657,62.664060832116974,False
+user_0002714,Public & Societal Benefit|Environment & Animals|Religion,0.10012649969256618,23.637544189564903,False
+user_0000940,"Human Services|Arts, Culture & Humanities",0.20620007057592485,16.032714951588257,False
+user_0006637,Human Services|Mutual & Membership Benefit|Health|Other / Unknown|Environment & Animals|Public & Societal Benefit,0.5805065283435602,34.904535864160636,False
+user_0007359,Human Services|Public & Societal Benefit|Environment & Animals|Other / Unknown|Religion|Mutual & Membership Benefit|International|Health,0.20019652951116168,29.218493158371466,False
+user_0000448,International|Health,0.5290519174308459,43.35135591023431,False
+user_0003631,Health|Environment & Animals,0.7708538983547638,24.709105924638926,False
+user_0007176,Public & Societal Benefit|Religion|Mutual & Membership Benefit|Health|Environment & Animals,0.6382670536802871,22.608644652027674,False
+user_0004852,"Education|International|Arts, Culture & Humanities|Religion|Other / Unknown|Environment & Animals|Human Services",0.29133219436520774,51.77812975227027,False
+user_0001686,Mutual & Membership Benefit|Environment & Animals|Public & Societal Benefit,0.34524473657140836,22.24639639967996,False
+user_0006390,Public & Societal Benefit|Other / Unknown|Religion|Education|Environment & Animals|Mutual & Membership Benefit|International,0.6103188017951502,20.770774779054275,False
+user_0001793,"Arts, Culture & Humanities|Health|Other / Unknown",0.4868739746585536,48.56875654371119,False
+user_0001675,Mutual & Membership Benefit|Other / Unknown|Education,0.5663445051241237,86.96057688444053,False
+user_0002174,Environment & Animals|Mutual & Membership Benefit,0.5329751934882123,36.54922717344396,False
+user_0001611,Public & Societal Benefit|Mutual & Membership Benefit,0.20485430415780126,45.028104390080586,False
+user_0004746,"Health|Arts, Culture & Humanities",0.6321292571286775,44.57559024050736,False
+user_0007069,Environment & Animals|Education|Health|International|Mutual & Membership Benefit|Religion,0.270438603413334,23.110999607104905,False
+user_0002862,Human Services|Environment & Animals|Public & Societal Benefit,0.021806387234977614,44.572488541457005,False
+user_0007989,"Arts, Culture & Humanities|Human Services|Other / Unknown|Religion|Mutual & Membership Benefit|International|Environment & Animals",0.5735089074263515,38.024737245941814,False
+user_0005645,"Arts, Culture & Humanities|Public & Societal Benefit|Human Services|International|Other / Unknown",0.5692135633814811,31.194694110790344,False
+user_0003463,Other / Unknown|Public & Societal Benefit,0.14033505442340752,26.27391025182704,False
+user_0004122,International|Mutual & Membership Benefit,0.2131147046071876,41.235753591206695,False
+user_0007238,"International|Education|Health|Environment & Animals|Other / Unknown|Arts, Culture & Humanities|Religion",0.5707064920359549,37.22455931838511,False
+user_0001212,International|Environment & Animals,0.202560930011518,38.40058821559694,False
+user_0001633,Mutual & Membership Benefit|Other / Unknown|International,0.5561747436387938,25.893963016636043,False
+user_0001337,International|Public & Societal Benefit|Mutual & Membership Benefit,0.47860655446368755,18.782377860796064,False
+user_0007723,"Other / Unknown|Human Services|Religion|International|Health|Education|Arts, Culture & Humanities",0.4898464893845129,84.67679303277437,False
+user_0007326,"Human Services|Environment & Animals|Education|Other / Unknown|Religion|International|Arts, Culture & Humanities",0.5659389238108156,40.62890749759794,False
+user_0005650,Human Services|International|Health|Public & Societal Benefit|Environment & Animals|Education|Other / Unknown,0.9346746379356609,9.117514720510496,False
+user_0007906,"Religion|Arts, Culture & Humanities|Environment & Animals|Other / Unknown|Human Services|Public & Societal Benefit|Health",0.24687784449660655,52.09574406606486,False
+user_0007876,"Other / Unknown|Environment & Animals|Health|Religion|Mutual & Membership Benefit|Human Services|Arts, Culture & Humanities|Public & Societal Benefit|Education",0.32175441533796084,23.18409011859883,False
+user_0002264,Other / Unknown|Human Services,0.586971236095507,256.31845967288393,False
+user_0006982,Mutual & Membership Benefit|Environment & Animals|Health|Public & Societal Benefit|Other / Unknown|Education|Human Services,0.4338209596723274,17.321859617653715,False
+user_0007013,Education|Mutual & Membership Benefit|Human Services|Other / Unknown|Public & Societal Benefit|Environment & Animals|Religion|Health,0.8789917284011904,72.93002376964239,False
+user_0001043,International|Public & Societal Benefit,0.4581645300651499,56.384296893591355,False
+user_0000436,Public & Societal Benefit|Human Services,0.39590736689846046,52.72051250651131,False
+user_0007964,"Arts, Culture & Humanities|International|Mutual & Membership Benefit|Education|Other / Unknown|Public & Societal Benefit",0.5197700838461145,151.37324447513524,False
+user_0003370,Other / Unknown|Human Services,0.30607188837000154,52.71597857945517,False
+user_0001094,Education|Health|Religion,0.6109175065845206,72.90679969503877,False
+user_0002757,Environment & Animals|Religion,0.3302059824635121,31.999701961526338,False
+user_0002215,Other / Unknown|Environment & Animals|Public & Societal Benefit,0.5459728494138639,25.824254421164916,False
+user_0000931,"Environment & Animals|Education|Arts, Culture & Humanities",0.6013600686413668,32.58780834442772,False
+user_0000505,Human Services|International,0.5226682990840584,82.8496720086254,False
+user_0001238,Human Services|Environment & Animals,0.04328811448239151,29.537823739159546,False
+user_0004323,Human Services|Other / Unknown|Public & Societal Benefit,0.4469728113529671,19.711693017061478,False
+user_0007797,Education|Environment & Animals|Other / Unknown|International|Religion|Mutual & Membership Benefit|Human Services,0.8172071255663572,43.37975816028405,False
+user_0004161,Mutual & Membership Benefit|Public & Societal Benefit,0.7161004609720213,31.44912832017032,False
+user_0005412,"Religion|International|Environment & Animals|Mutual & Membership Benefit|Health|Public & Societal Benefit|Arts, Culture & Humanities|Education|Other / Unknown",0.4978092377993462,21.014237034436952,False
+user_0005717,"Education|Environment & Animals|Public & Societal Benefit|Health|Arts, Culture & Humanities|Religion",0.401454124554383,55.90440098977898,False
+user_0004799,Education|Mutual & Membership Benefit|International,0.4331063915098347,41.54849539792101,False
+user_0000410,"Environment & Animals|Arts, Culture & Humanities|Education",0.11664231310782079,32.34558682560978,False
+user_0007944,Mutual & Membership Benefit|Human Services|International|Other / Unknown|Public & Societal Benefit,0.8071348559431724,12.289896085743663,False
+user_0006121,"Public & Societal Benefit|Health|Religion|Arts, Culture & Humanities|Environment & Animals|Human Services|International|Education",0.3569271555909298,27.715624718128822,False
+user_0001203,Public & Societal Benefit|Other / Unknown|Health,0.32409195253108536,56.79864371682162,False

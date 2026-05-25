@@ -298,6 +298,20 @@ def run_benchmark(*, fast: bool, seed: int = DEFAULT_SEED) -> dict[str, Any]:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     (RESULTS_DIR / "metrics.json").write_text(json.dumps(metrics_summary, indent=2, default=str))
 
+    # Save the centerpiece model + a slim demo bundle for the live service.
+    if centerpiece_ref is not None and not fast:
+        artifacts_dir = BENCH_ROOT.parent / "app" / "artifacts"
+        centerpiece_ref.save_artifacts(artifacts_dir)
+        _write_demo_bundle(
+            artifacts_dir,
+            orgs=orgs,
+            users_df=users_df,
+            profiles=profiles,
+            train=train,
+            test=test,
+            metrics=metrics_summary,
+        )
+
     # REPORT.md + HTML landing pages
     _write_report(metrics_summary, RESULTS_DIR / "REPORT.md")
     _write_html_report(metrics_summary, RESULTS_DIR / "index.html", image_prefix="")
@@ -441,6 +455,67 @@ def _write_report(summary: dict[str, Any], out_path: Path) -> None:
     lines.append("")
     lines.append("See `bench/README.md` for the honesty footer and data provenance.")
     out_path.write_text("\n".join(lines))
+
+
+def _write_demo_bundle(
+    out_dir: Path,
+    *,
+    orgs: pd.DataFrame,
+    users_df: pd.DataFrame,
+    profiles: list,
+    train: pd.DataFrame,
+    test: pd.DataFrame,
+    metrics: dict,
+) -> None:
+    """Write a slim bundle the FastAPI service loads at boot.
+
+    Only what the demo needs: orgs metadata, a sample of users with their
+    train donation histories, and a frozen copy of the metrics summary for
+    the static parts of the UI.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    orgs[
+        ["org_id", "name", "category", "ntee_major", "ntee_full", "city", "state"]
+    ].to_csv(out_dir / "demo_orgs.csv", index=False)
+
+    # Sample demo users with at least 3 train events, biased toward category-locked
+    # so the demo UI has clean "this user only donates to environment, watch the
+    # recommendations stay in category" stories.
+    train_counts = train.groupby("user_id").size().to_dict()
+    eligible = users_df[users_df["user_id"].map(train_counts).fillna(0) >= 3]
+    locked_users = eligible[eligible["is_category_locked"] == True]
+    multi_users = eligible[eligible["is_category_locked"] == False]
+    n_locked = min(len(locked_users), 30)
+    n_multi = min(len(multi_users), 170)
+    demo_user_df = pd.concat([
+        locked_users.sample(n=n_locked, random_state=0),
+        multi_users.sample(n=n_multi, random_state=0),
+    ]).reset_index(drop=True)
+    demo_user_ids = set(demo_user_df["user_id"])
+
+    demo_user_df.to_csv(out_dir / "demo_users.csv", index=False)
+    train_for_demo = train[train["user_id"].isin(demo_user_ids)]
+    train_for_demo[["user_id", "org_id", "category", "timestamp_day"]].to_csv(
+        out_dir / "demo_donations.csv", index=False
+    )
+    test_for_demo = test[test["user_id"].isin(demo_user_ids)]
+    test_for_demo[["user_id", "org_id", "category"]].to_csv(
+        out_dir / "demo_test_truth.csv", index=False
+    )
+
+    import json
+    (out_dir / "demo_metrics.json").write_text(json.dumps({
+        "models": metrics["models"],
+        "invariants": metrics["invariants"],
+        "n_orgs": metrics["n_orgs"],
+        "n_users": metrics["n_users"],
+        "n_donations": metrics["n_donations"],
+        "dataset_snapshot_date": metrics["dataset_snapshot_date"],
+        "git_sha": metrics["git_sha"],
+        "generated_at": metrics["generated_at"],
+        "runtime_seconds": metrics["runtime_seconds"],
+        "seed": metrics["seed"],
+    }))
 
 
 HTML_TEMPLATE = """<!DOCTYPE html>

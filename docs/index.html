@@ -59,11 +59,11 @@
 <p class="lede">Six models, real US-nonprofit corpus from ProPublica, synthetic giving patterns. <span class="mono">make bench</span> reproduces every number on this page in ~1.5 min on a CPU laptop.</p>
 
 <div class="meta">
-  <div><span class="k">generated</span><span class="v">2026-05-25T22:23:50.333547+00:00</span></div>
-  <div><span class="k">git sha</span><span class="v">e0ea105</span></div>
+  <div><span class="k">generated</span><span class="v">2026-05-25T22:54:48.025751+00:00</span></div>
+  <div><span class="k">git sha</span><span class="v">ae4fb36</span></div>
   <div><span class="k">corpus snapshot</span><span class="v">2026-05-24</span></div>
   <div><span class="k">seed</span><span class="v">42</span></div>
-  <div><span class="k">runtime</span><span class="v">99.64s</span></div>
+  <div><span class="k">runtime</span><span class="v">100.65s</span></div>
   <div><span class="k">orgs</span><span class="v">3,000</span></div>
   <div><span class="k">synthetic users</span><span class="v">8,000</span></div>
   <div><span class="k">events (train/val/test)</span><span class="v">72,352 / 17,506 / 22,708</span></div>
@@ -72,7 +72,7 @@
 <h2>Headline comparison</h2>
 <p>Metrics are mean-over-users. Higher is better for ranking metrics. <span class="mono">coverage@10</span> = fraction of org corpus appearing in any user's top-10; <span class="mono">diversity@10</span> = mean intra-list category entropy (higher = more diverse). The centerpiece <span class="mono">two-tower</span> row is highlighted.</p>
 <table><thead><tr><th>Model</th><th>ndcg@10</th><th>recall@10</th><th>mrr</th><th>map@10</th><th>coverage@10</th><th>diversity@10</th><th>cold_user_ndcg@10</th><th>cold_org_recall@10</th></tr></thead><tbody>
-<tr><td>random</td><td>0.0015</td><td>0.0026</td><td>0.0033</td><td>0.0007</td><td>1.0000</td><td>2.5559</td><td>0.0005</td><td>0.0000</td></tr>
+<tr><td>random</td><td>0.0024</td><td>0.0041</td><td>0.0046</td><td>0.0011</td><td>1.0000</td><td>2.5594</td><td>0.0031</td><td>0.0000</td></tr>
 <tr><td>popularity</td><td>0.0064</td><td>0.0105</td><td>0.0119</td><td>0.0031</td><td>0.0033</td><td>2.9219</td><td>0.0074</td><td>0.0000</td></tr>
 <tr><td>category-match</td><td>0.0255</td><td>0.0392</td><td>0.0449</td><td>0.0129</td><td>0.0333</td><td>0.0000</td><td>0.0158</td><td>0.0000</td></tr>
 <tr><td>matrix-factorization</td><td>0.0212</td><td>0.0310</td><td>0.0406</td><td>0.0107</td><td>0.1493</td><td>1.1531</td><td>0.0085</td><td>0.0000</td></tr>
@@ -90,7 +90,7 @@
 <ul class="invariants">
 <li><span class="pass">✅ PASS</span> · <strong>category-locked</strong> — score <span class="mono">0.9992</span>, threshold <span class="mono">0.4000</span>. <span class="mono" style="color:var(--fg-dim)">mean fraction of top-10 in the user's locked category</span></li>
 <li><span class="fail">❌ FAIL</span> · <strong>diversity-floor</strong> — score <span class="mono">1.0000</span>, threshold <span class="mono">0.9500</span>. <span class="mono" style="color:var(--fg-dim)">worst single-category share of any user's top-10; threshold=0.95</span></li>
-<li><span class="pass">✅ PASS</span> · <strong>beats-random</strong> — score <span class="mono">0.0105</span>, threshold <span class="mono">0.0015</span>. <span class="mono" style="color:var(--fg-dim)">two-tower ndcg@10=0.0120 vs random ndcg@10=0.0015; require >2x</span></li>
+<li><span class="pass">✅ PASS</span> · <strong>beats-random</strong> — score <span class="mono">0.0096</span>, threshold <span class="mono">0.0024</span>. <span class="mono" style="color:var(--fg-dim)">two-tower ndcg@10=0.0120 vs random ndcg@10=0.0024; require >2x</span></li>
 </ul>
 
 <h2>Two-tower centerpiece</h2>

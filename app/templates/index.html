@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>donation-platform · recommender operator console</title>
+<meta name="description" content="Live interactive demo of a two-tower PyTorch recommender on a real ProPublica nonprofit corpus." />
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-2: #14141a;
+    --bg-3: #1c1c24;
+    --fg: #e8e8e8;
+    --fg-dim: #9aa0a6;
+    --fg-dimmer: #6b7077;
+    --accent: #7cf26b;
+    --accent-dim: #5cb84d;
+    --border: #2a2a30;
+    --border-strong: #3a3a44;
+    --warn: #f2c94c;
+    --bad: #f26b7c;
+    --good: #7cf26b;
+    --truth: #6bc9f2;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  body {
+    font: 13.5px/1.55 ui-sans-serif, system-ui, "Geist", "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  }
+  code, .mono { font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace; }
+
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar .title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .topbar .title .dot { color: var(--accent); }
+  .topbar .meta {
+    color: var(--fg-dim);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar .meta span b { color: var(--fg); font-weight: 500; }
+  .topbar .right { margin-left: auto; }
+  .topbar a { color: var(--accent); text-decoration: none; }
+  .topbar a:hover { text-decoration: underline; }
+
+  .main {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    height: calc(100vh - 53px);
+    overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    .main { grid-template-columns: 1fr; height: auto; }
+  }
+
+  .left {
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .left .label {
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    padding: 16px 20px 8px;
+  }
+  .left .filter {
+    padding: 0 16px 12px;
+  }
+  .left .filter input {
+    width: 100%;
+    background: var(--bg-2);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+  }
+  .left .filter input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+  }
+  .left .user-list {
+    overflow-y: auto;
+    flex: 1;
+    padding: 4px 0;
+  }
+  .user-item {
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.08s;
+  }
+  .user-item:hover { background: var(--bg-2); }
+  .user-item.active { background: var(--bg-3); border-left: 2px solid var(--accent); padding-left: 18px; }
+  .user-item .uid { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--fg-dim); }
+  .user-item .label-text { font-size: 12px; color: var(--fg); margin-top: 2px; }
+  .user-item.locked .label-text { color: var(--accent); }
+
+  .right {
+    overflow-y: auto;
+    padding: 20px 28px 60px;
+  }
+  .right .pane {
+    margin-bottom: 28px;
+  }
+  .right h2 {
+    font-size: 0.95rem;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .right h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg-dim);
+    margin: 14px 0 6px;
+  }
+  .empty-state {
+    color: var(--fg-dimmer);
+    padding: 40px 20px;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .user-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px 20px;
+    padding: 12px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .user-summary div { display: flex; flex-direction: column; }
+  .user-summary .k {
+    color: var(--fg-dim);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .user-summary .v {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--fg);
+  }
+
+  .rec-list, .history-list { margin: 8px 0; }
+  .rec-item, .history-item {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .rec-item:last-child, .history-item:last-child { border-bottom: none; }
+  .rec-item .rank {
+    color: var(--fg-dim);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+  }
+  .rec-item.in-truth .rank { color: var(--truth); }
+  .rec-item .name { font-weight: 500; color: var(--fg); }
+  .rec-item .meta-row {
+    margin-top: 2px;
+    color: var(--fg-dim);
+    font-size: 11.5px;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .rec-item .reasons {
+    margin-top: 4px;
+    color: var(--fg-dim);
+    font-size: 11.5px;
+  }
+  .rec-item .reasons .truth { color: var(--truth); }
+  .history-item .day {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--fg-dimmer);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--bg-3);
+    color: var(--fg-dim);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    margin-left: 4px;
+  }
+  .badge.cat { background: rgba(124, 242, 107, 0.1); color: var(--accent); }
+
+  table.cmp {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 4px;
+    font-size: 12px;
+  }
+  table.cmp th, table.cmp td {
+    border: 1px solid var(--border);
+    padding: 5px 8px;
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+  }
+  table.cmp th:first-child, table.cmp td:first-child { text-align: left; }
+  table.cmp thead th {
+    background: var(--bg-2);
+    color: var(--fg-dim);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+  }
+  table.cmp tbody tr.highlight {
+    background: rgba(124, 242, 107, 0.06);
+  }
+  table.cmp tbody tr.highlight td:first-child::before {
+    content: "▸ ";
+    color: var(--accent);
+  }
+
+  .invariants {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    font-size: 12.5px;
+  }
+  .invariants li {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .invariants li:last-child { border-bottom: none; }
+  .pass { color: var(--good); }
+  .fail { color: var(--bad); }
+
+  .honesty {
+    margin-top: 28px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-2);
+    font-size: 12px;
+    color: var(--fg-dim);
+  }
+  .honesty strong { color: var(--warn); }
+  .honesty li { margin: 4px 0; }
+
+  .footer-line {
+    margin-top: 22px;
+    color: var(--fg-dimmer);
+    font-size: 11.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="title">donation-platform <span class="dot">·</span> recommender operator console</div>
+  <div class="meta">
+    <span><b>orgs</b> {{ dataset.n_orgs_total | default('—') }}</span>
+    <span><b>synthetic users</b> {{ dataset.n_users_total | default('—') }}</span>
+    <span><b>events</b> {{ dataset.n_donations_total | default('—') }}</span>
+    <span><b>snapshot</b> {{ dataset.dataset_snapshot_date | default('—') }}</span>
+    <span><b>git</b> {{ dataset.git_sha | default('—') }}</span>
+  </div>
+  <div class="right">
+    <a href="https://github.com/d-malhotra2020/donation-platform">github</a>
+    · <a href="https://d-malhotra2020.github.io/donation-platform/">report</a>
+    · <a href="https://drewmalhotra.com/work/donation-platform">deep-dive</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="left">
+    <div class="label">Pick a synthetic user</div>
+    <div class="filter"><input id="filter" type="text" placeholder="filter by id or interest…" autocomplete="off"></div>
+    <div class="user-list" id="user-list"></div>
+  </div>
+
+  <div class="right">
+    <div id="empty" class="empty-state">
+      ← Pick a user to see their training history and the two-tower model's top-10 recommendations in real time.
+    </div>
+
+    <div class="pane" id="user-pane" style="display:none">
+      <h2>Selected user</h2>
+      <div class="user-summary" id="user-summary"></div>
+
+      <h3>Top-10 recommendations · two-tower model</h3>
+      <div class="rec-list" id="rec-list"></div>
+
+      <h3>Training history · most recent</h3>
+      <div class="history-list" id="history-list"></div>
+    </div>
+
+    <div class="pane">
+      <h2>Model comparison · entire test set</h2>
+      <table class="cmp" id="cmp-table"></table>
+    </div>
+
+    <div class="pane">
+      <h2>Synthetic-user invariants · build gates</h2>
+      <ul class="invariants" id="inv-list"></ul>
+    </div>
+
+    <div class="honesty">
+      <strong>What this is:</strong> a two-tower PyTorch recommender trained offline on a sanitized snapshot of <a style="color:var(--accent)" href="https://projects.propublica.org/nonprofits/api">ProPublica's Nonprofit Explorer</a>; synthetic users + donation events generated from a seeded process.
+      <ul>
+        <li>Real US-nonprofit org metadata. ~3K orgs sampled across NTEE major categories.</li>
+        <li>Synthetic users + donations only. No real donor behavior represented anywhere on this page.</li>
+        <li>All metrics measure model quality on this synthetic giving pattern — not real production performance.</li>
+        <li>Slice 1 of a four-slice rebuild — only the recommender + offline eval ship here. Gateway + cache + payments are not in scope.</li>
+      </ul>
+    </div>
+
+    <div class="footer-line">
+      generated <span class="mono">{{ dataset.bench_generated_at }}</span> · runtime <span class="mono">{{ dataset.bench_runtime_seconds }}s</span> · seed <span class="mono">{{ dataset.bench_seed }}</span> · <span class="mono">make bench</span> reproduces every number on this page
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let users = [];
+let currentUserId = null;
+
+async function fetchJSON(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${url} → ${r.status}`);
+  return r.json();
+}
+
+function renderUserList(filter = "") {
+  const f = filter.trim().toLowerCase();
+  const list = $("user-list");
+  list.innerHTML = "";
+  const filtered = users.filter(u =>
+    !f
+    || u.user_id.toLowerCase().includes(f)
+    || u.label.toLowerCase().includes(f)
+    || (u.primary_categories || []).some(c => c.toLowerCase().includes(f))
+  );
+  for (const u of filtered) {
+    const el = document.createElement("div");
+    el.className = "user-item" + (u.is_category_locked ? " locked" : "") + (u.user_id === currentUserId ? " active" : "");
+    el.innerHTML = `<div class="uid">${u.user_id}</div><div class="label-text">${u.label}</div>`;
+    el.addEventListener("click", () => selectUser(u.user_id));
+    list.appendChild(el);
+  }
+}
+
+async function selectUser(userId) {
+  currentUserId = userId;
+  renderUserList($("filter").value);
+  $("empty").style.display = "none";
+  $("user-pane").style.display = "";
+
+  const detail = await fetchJSON(`/api/v1/users/${encodeURIComponent(userId)}`);
+
+  const sum = $("user-summary");
+  sum.innerHTML = `
+    <div><span class="k">user id</span><span class="v">${detail.user_id}</span></div>
+    <div><span class="k">profile</span><span class="v">${detail.is_category_locked ? "category-locked" : "multi-interest"}</span></div>
+    <div><span class="k">primary categories</span><span class="v">${(detail.primary_categories || []).join(" · ") || "—"}</span></div>
+    <div><span class="k">train donations</span><span class="v">${detail.n_train_donations}</span></div>
+    <div><span class="k">held-out test events</span><span class="v">${detail.n_test_truth}</span></div>
+  `;
+
+  const recList = $("rec-list");
+  recList.innerHTML = "";
+  for (const r of detail.recommendations) {
+    const reasons = (r.reasons || []).map(x =>
+      x.startsWith("✓") ? `<span class="truth">${x}</span>` : x
+    ).join(" · ");
+    const el = document.createElement("div");
+    el.className = "rec-item" + (r.in_truth ? " in-truth" : "");
+    el.innerHTML = `
+      <div class="rank">${r.rank.toString().padStart(2, "0")}</div>
+      <div>
+        <div class="name">${r.name} <span class="badge cat">${r.category}</span></div>
+        <div class="meta-row">${r.org_id} · ${r.city}${r.state ? ", " + r.state : ""}</div>
+        <div class="reasons">${reasons}</div>
+      </div>
+      <div></div>
+    `;
+    recList.appendChild(el);
+  }
+
+  const historyList = $("history-list");
+  historyList.innerHTML = "";
+  if (detail.recent_history.length === 0) {
+    historyList.innerHTML = `<div class="empty-state" style="padding: 16px 0; text-align: left">no train donations.</div>`;
+  }
+  for (const h of detail.recent_history) {
+    const el = document.createElement("div");
+    el.className = "history-item";
+    el.innerHTML = `
+      <div></div>
+      <div>
+        <div class="name">${h.name} <span class="badge cat">${h.category}</span></div>
+        <div class="meta-row">${h.org_id} · ${h.city}${h.state ? ", " + h.state : ""}</div>
+      </div>
+      <div class="day">day ${h.day}</div>
+    `;
+    historyList.appendChild(el);
+  }
+}
+
+async function renderComparison() {
+  const { models } = await fetchJSON("/api/v1/comparison");
+  const cols = ["ndcg@10", "recall@10", "mrr", "map@10", "coverage@10", "diversity@10", "cold_user_ndcg@10", "cold_org_recall@10"];
+  let html = "<thead><tr><th>model</th>" + cols.map(c => `<th>${c}</th>`).join("") + "</tr></thead><tbody>";
+  for (const row of models) {
+    const cls = row.model === "two-tower" ? "highlight" : "";
+    html += `<tr class="${cls}"><td>${row.model}</td>` + cols.map(c => {
+      const v = row[c];
+      return `<td>${v === null || v === undefined ? "—" : (typeof v === "number" ? v.toFixed(4) : v)}</td>`;
+    }).join("") + "</tr>";
+  }
+  html += "</tbody>";
+  $("cmp-table").innerHTML = html;
+}
+
+async function renderInvariants() {
+  const { invariants } = await fetchJSON("/api/v1/invariants");
+  const list = $("inv-list");
+  list.innerHTML = "";
+  for (const inv of invariants) {
+    const cls = inv.passed ? "pass" : "fail";
+    const status = inv.passed ? "✅ PASS" : "❌ FAIL";
+    const el = document.createElement("li");
+    el.innerHTML = `<span class="${cls}">${status}</span> · <strong>${inv.name}</strong> · score <span class="mono">${inv.score.toFixed(4)}</span> · threshold <span class="mono">${inv.threshold.toFixed(4)}</span><br><span style="color:var(--fg-dimmer); font-size: 11.5px">${inv.notes || ""}</span>`;
+    list.appendChild(el);
+  }
+}
+
+async function bootstrap() {
+  const data = await fetchJSON("/api/v1/users?limit=200");
+  users = data.users || [];
+  renderUserList();
+  $("filter").addEventListener("input", (e) => renderUserList(e.target.value));
+  await Promise.all([renderComparison(), renderInvariants()]);
+}
+
+bootstrap().catch(err => {
+  console.error(err);
+  $("empty").innerText = "failed to load — see console";
+});
+</script>
+
+</body>
+</html>

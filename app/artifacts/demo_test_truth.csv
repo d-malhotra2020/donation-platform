@@ -1,0 +1,585 @@
+user_id,org_id,category
+user_0000000,org_000296,"Arts, Culture & Humanities"
+user_0000000,org_000101,"Arts, Culture & Humanities"
+user_0000000,org_000101,"Arts, Culture & Humanities"
+user_0000000,org_000450,"Arts, Culture & Humanities"
+user_0000000,org_000092,"Arts, Culture & Humanities"
+user_0000003,org_003172,Public & Societal Benefit
+user_0000003,org_003143,Public & Societal Benefit
+user_0000011,org_000900,Education
+user_0000011,org_000953,Education
+user_0000011,org_000722,Education
+user_0000011,org_000560,Education
+user_0000051,org_001068,Environment & Animals
+user_0000051,org_001298,Environment & Animals
+user_0000051,org_001117,Environment & Animals
+user_0000056,org_004804,Other / Unknown
+user_0000056,org_004502,Other / Unknown
+user_0000094,org_004515,Other / Unknown
+user_0000094,org_004641,Other / Unknown
+user_0000094,org_004836,Other / Unknown
+user_0000097,org_002603,International
+user_0000097,org_002804,International
+user_0000102,org_004007,Mutual & Membership Benefit
+user_0000102,org_004055,Mutual & Membership Benefit
+user_0000102,org_004469,Mutual & Membership Benefit
+user_0000115,org_004280,Mutual & Membership Benefit
+user_0000115,org_004433,Mutual & Membership Benefit
+user_0000120,org_000772,Education
+user_0000120,org_000954,Education
+user_0000120,org_000555,Education
+user_0000120,org_000904,Education
+user_0000122,org_003538,Religion
+user_0000122,org_003572,Religion
+user_0000122,org_003684,Religion
+user_0000122,org_003708,Religion
+user_0000122,org_003947,Religion
+user_0000162,org_000683,Education
+user_0000162,org_000894,Education
+user_0000162,org_000884,Education
+user_0000162,org_000708,Education
+user_0000162,org_000641,Education
+user_0000179,org_000727,Education
+user_0000179,org_000990,Education
+user_0000188,org_004594,Other / Unknown
+user_0000188,org_004816,Other / Unknown
+user_0000219,org_002495,Human Services
+user_0000219,org_002126,Human Services
+user_0000222,org_003388,Public & Societal Benefit
+user_0000222,org_003375,Public & Societal Benefit
+user_0000230,org_001539,Health
+user_0000230,org_001805,Health
+user_0000230,org_001526,Health
+user_0000249,org_000382,"Arts, Culture & Humanities"
+user_0000249,org_000031,"Arts, Culture & Humanities"
+user_0000253,org_004703,Other / Unknown
+user_0000253,org_004613,Other / Unknown
+user_0000253,org_004692,Other / Unknown
+user_0000253,org_004559,Other / Unknown
+user_0000263,org_003893,Religion
+user_0000263,org_003950,Religion
+user_0000263,org_003807,Religion
+user_0000286,org_002104,Human Services
+user_0000286,org_002194,Human Services
+user_0000286,org_002286,Human Services
+user_0000286,org_002268,Human Services
+user_0000291,org_001896,Health
+user_0000291,org_001971,Health
+user_0000291,org_001709,Health
+user_0000291,org_001734,Health
+user_0000291,org_001893,Health
+user_0000297,org_000139,"Arts, Culture & Humanities"
+user_0000297,org_000360,"Arts, Culture & Humanities"
+user_0000302,org_004864,Other / Unknown
+user_0000302,org_004530,Other / Unknown
+user_0000305,org_002322,Human Services
+user_0000305,org_002184,Human Services
+user_0000305,org_002399,Human Services
+user_0000306,org_001281,Environment & Animals
+user_0000306,org_001144,Environment & Animals
+user_0000306,org_001002,Environment & Animals
+user_0000306,org_001093,Environment & Animals
+user_0000354,org_004286,Mutual & Membership Benefit
+user_0000354,org_004026,Mutual & Membership Benefit
+user_0000354,org_004024,Mutual & Membership Benefit
+user_0000354,org_004223,Mutual & Membership Benefit
+user_0000354,org_004143,Mutual & Membership Benefit
+user_0000376,org_003110,Public & Societal Benefit
+user_0000376,org_003474,Public & Societal Benefit
+user_0000376,org_003489,Public & Societal Benefit
+user_0000377,org_002874,International
+user_0000377,org_002852,International
+user_0000377,org_002865,International
+user_0000393,org_003799,Religion
+user_0000393,org_003618,Religion
+user_0000393,org_003835,Religion
+user_0000410,org_001322,Environment & Animals
+user_0000410,org_000322,"Arts, Culture & Humanities"
+user_0000436,org_002474,Human Services
+user_0000448,org_002851,International
+user_0000448,org_001568,Health
+user_0000505,org_002500,International
+user_0000505,org_002832,International
+user_0000505,org_002794,International
+user_0000505,org_002059,Human Services
+user_0000534,org_001975,Health
+user_0000534,org_000447,"Arts, Culture & Humanities"
+user_0000534,org_001874,Health
+user_0000615,org_001329,Environment & Animals
+user_0000615,org_001248,Environment & Animals
+user_0000615,org_002852,International
+user_0000685,org_003489,Public & Societal Benefit
+user_0000685,org_003453,Public & Societal Benefit
+user_0000685,org_003317,Public & Societal Benefit
+user_0000688,org_000312,"Arts, Culture & Humanities"
+user_0000688,org_001505,Health
+user_0000728,org_001360,Environment & Animals
+user_0000728,org_001478,Environment & Animals
+user_0000742,org_000220,"Arts, Culture & Humanities"
+user_0000742,org_000176,"Arts, Culture & Humanities"
+user_0000742,org_000234,"Arts, Culture & Humanities"
+user_0000742,org_000237,"Arts, Culture & Humanities"
+user_0000742,org_001117,Environment & Animals
+user_0000794,org_003494,Public & Societal Benefit
+user_0000794,org_004462,Mutual & Membership Benefit
+user_0000831,org_002423,Human Services
+user_0000831,org_002006,Human Services
+user_0000921,org_003314,Public & Societal Benefit
+user_0000921,org_003076,Public & Societal Benefit
+user_0000921,org_004900,Other / Unknown
+user_0000931,org_000748,Education
+user_0000940,org_000153,"Arts, Culture & Humanities"
+user_0000940,org_000465,"Arts, Culture & Humanities"
+user_0000940,org_000069,"Arts, Culture & Humanities"
+user_0000940,org_000316,"Arts, Culture & Humanities"
+user_0000940,org_000109,"Arts, Culture & Humanities"
+user_0000965,org_003545,Religion
+user_0000965,org_001601,Health
+user_0000969,org_002316,Human Services
+user_0000969,org_002391,Human Services
+user_0001043,org_003437,Public & Societal Benefit
+user_0001043,org_002539,International
+user_0001043,org_003426,Public & Societal Benefit
+user_0001094,org_000860,Education
+user_0001094,org_000858,Education
+user_0001094,org_000974,Education
+user_0001094,org_000858,Education
+user_0001149,org_003417,Public & Societal Benefit
+user_0001149,org_003019,Public & Societal Benefit
+user_0001149,org_003394,Public & Societal Benefit
+user_0001203,org_003409,Public & Societal Benefit
+user_0001203,org_001951,Health
+user_0001203,org_004576,Other / Unknown
+user_0001212,org_001082,Environment & Animals
+user_0001212,org_002575,International
+user_0001238,org_001101,Environment & Animals
+user_0001256,org_004814,Other / Unknown
+user_0001337,org_004194,Mutual & Membership Benefit
+user_0001458,org_002395,Human Services
+user_0001458,org_003123,Public & Societal Benefit
+user_0001458,org_002103,Human Services
+user_0001551,org_004249,Mutual & Membership Benefit
+user_0001584,org_002658,International
+user_0001589,org_000641,Education
+user_0001589,org_000780,Education
+user_0001589,org_001631,Health
+user_0001611,org_003070,Public & Societal Benefit
+user_0001633,org_002810,International
+user_0001633,org_004567,Other / Unknown
+user_0001633,org_002653,International
+user_0001633,org_002719,International
+user_0001642,org_002485,Human Services
+user_0001642,org_002799,International
+user_0001642,org_002475,Human Services
+user_0001642,org_004364,Mutual & Membership Benefit
+user_0001642,org_002323,Human Services
+user_0001668,org_003568,Religion
+user_0001675,org_000799,Education
+user_0001675,org_000766,Education
+user_0001675,org_004910,Other / Unknown
+user_0001675,org_004994,Other / Unknown
+user_0001675,org_000626,Education
+user_0001686,org_001340,Environment & Animals
+user_0001717,org_002440,Human Services
+user_0001717,org_003246,Public & Societal Benefit
+user_0001741,org_004131,Mutual & Membership Benefit
+user_0001741,org_000593,Education
+user_0001741,org_004131,Mutual & Membership Benefit
+user_0001787,org_003167,Public & Societal Benefit
+user_0001787,org_002407,Human Services
+user_0001787,org_002462,Human Services
+user_0001793,org_000360,"Arts, Culture & Humanities"
+user_0001852,org_000798,Education
+user_0001852,org_004125,Mutual & Membership Benefit
+user_0001852,org_004018,Mutual & Membership Benefit
+user_0001856,org_002589,International
+user_0002028,org_002738,International
+user_0002028,org_000835,Education
+user_0002028,org_002856,International
+user_0002098,org_000786,Education
+user_0002098,org_000780,Education
+user_0002098,org_004699,Other / Unknown
+user_0002098,org_001529,Health
+user_0002174,org_004376,Mutual & Membership Benefit
+user_0002174,org_004388,Mutual & Membership Benefit
+user_0002214,org_002045,Human Services
+user_0002214,org_002336,Human Services
+user_0002214,org_004396,Mutual & Membership Benefit
+user_0002214,org_004386,Mutual & Membership Benefit
+user_0002214,org_002129,Human Services
+user_0002215,org_001111,Environment & Animals
+user_0002215,org_001347,Environment & Animals
+user_0002243,org_000405,"Arts, Culture & Humanities"
+user_0002264,org_004507,Other / Unknown
+user_0002264,org_004506,Other / Unknown
+user_0002264,org_004744,Other / Unknown
+user_0002264,org_004734,Other / Unknown
+user_0002264,org_004639,Other / Unknown
+user_0002342,org_003069,Public & Societal Benefit
+user_0002342,org_003274,Public & Societal Benefit
+user_0002515,org_001953,Health
+user_0002515,org_001787,Health
+user_0002515,org_004904,Other / Unknown
+user_0002515,org_004798,Other / Unknown
+user_0002516,org_002464,Human Services
+user_0002516,org_002396,Human Services
+user_0002559,org_004994,Other / Unknown
+user_0002559,org_002647,International
+user_0002559,org_002787,International
+user_0002559,org_002575,International
+user_0002628,org_002796,International
+user_0002628,org_001981,Health
+user_0002628,org_001909,Health
+user_0002714,org_003141,Public & Societal Benefit
+user_0002714,org_003940,Religion
+user_0002714,org_003024,Public & Societal Benefit
+user_0002753,org_001472,Environment & Animals
+user_0002753,org_003761,Religion
+user_0002757,org_001038,Environment & Animals
+user_0002757,org_001168,Environment & Animals
+user_0002757,org_001376,Environment & Animals
+user_0002762,org_001470,Environment & Animals
+user_0002762,org_001006,Environment & Animals
+user_0002762,org_001084,Environment & Animals
+user_0002762,org_001113,Environment & Animals
+user_0002797,org_004073,Mutual & Membership Benefit
+user_0002797,org_004675,Other / Unknown
+user_0002797,org_004381,Mutual & Membership Benefit
+user_0002797,org_004416,Mutual & Membership Benefit
+user_0002797,org_004471,Mutual & Membership Benefit
+user_0002839,org_003110,Public & Societal Benefit
+user_0002839,org_003144,Public & Societal Benefit
+user_0002861,org_003126,Public & Societal Benefit
+user_0002861,org_003103,Public & Societal Benefit
+user_0002861,org_000542,Education
+user_0002861,org_003469,Public & Societal Benefit
+user_0002862,org_002046,Human Services
+user_0002862,org_003352,Public & Societal Benefit
+user_0002872,org_004738,Other / Unknown
+user_0002872,org_004947,Other / Unknown
+user_0002872,org_002193,Human Services
+user_0002872,org_002317,Human Services
+user_0002958,org_004299,Mutual & Membership Benefit
+user_0002958,org_004376,Mutual & Membership Benefit
+user_0002958,org_004899,Other / Unknown
+user_0002958,org_003030,Public & Societal Benefit
+user_0002958,org_004559,Other / Unknown
+user_0003158,org_001123,Environment & Animals
+user_0003158,org_001272,Environment & Animals
+user_0003158,org_003335,Public & Societal Benefit
+user_0003158,org_003210,Public & Societal Benefit
+user_0003176,org_003581,Religion
+user_0003176,org_004305,Mutual & Membership Benefit
+user_0003176,org_003569,Religion
+user_0003176,org_003995,Religion
+user_0003189,org_000177,"Arts, Culture & Humanities"
+user_0003189,org_000338,"Arts, Culture & Humanities"
+user_0003189,org_003798,Religion
+user_0003196,org_002202,Human Services
+user_0003196,org_002395,Human Services
+user_0003196,org_003972,Religion
+user_0003196,org_003056,Public & Societal Benefit
+user_0003196,org_003336,Public & Societal Benefit
+user_0003236,org_000702,Education
+user_0003236,org_000947,Education
+user_0003236,org_002616,International
+user_0003370,org_004961,Other / Unknown
+user_0003370,org_004890,Other / Unknown
+user_0003370,org_004834,Other / Unknown
+user_0003417,org_001261,Environment & Animals
+user_0003417,org_002824,International
+user_0003418,org_001511,Health
+user_0003463,org_004516,Other / Unknown
+user_0003463,org_004640,Other / Unknown
+user_0003463,org_003284,Public & Societal Benefit
+user_0003516,org_002408,Human Services
+user_0003516,org_001010,Environment & Animals
+user_0003621,org_004891,Other / Unknown
+user_0003621,org_004953,Other / Unknown
+user_0003621,org_004893,Other / Unknown
+user_0003631,org_001882,Health
+user_0003631,org_001932,Health
+user_0003631,org_001610,Health
+user_0003631,org_001623,Health
+user_0003631,org_001869,Health
+user_0003669,org_001076,Environment & Animals
+user_0003669,org_003653,Religion
+user_0003669,org_003645,Religion
+user_0003685,org_003857,Religion
+user_0003685,org_001745,Health
+user_0003685,org_004439,Mutual & Membership Benefit
+user_0003685,org_004181,Mutual & Membership Benefit
+user_0003685,org_004228,Mutual & Membership Benefit
+user_0003706,org_001158,Environment & Animals
+user_0003706,org_001131,Environment & Animals
+user_0003706,org_004046,Mutual & Membership Benefit
+user_0003706,org_004500,Other / Unknown
+user_0003986,org_004109,Mutual & Membership Benefit
+user_0003986,org_004199,Mutual & Membership Benefit
+user_0004122,org_002798,International
+user_0004122,org_002739,International
+user_0004122,org_004485,Mutual & Membership Benefit
+user_0004123,org_002304,Human Services
+user_0004123,org_003906,Religion
+user_0004123,org_002406,Human Services
+user_0004123,org_002129,Human Services
+user_0004161,org_003086,Public & Societal Benefit
+user_0004323,org_002060,Human Services
+user_0004323,org_002271,Human Services
+user_0004323,org_003455,Public & Societal Benefit
+user_0004323,org_002104,Human Services
+user_0004330,org_001002,Environment & Animals
+user_0004330,org_001000,Environment & Animals
+user_0004396,org_003399,Public & Societal Benefit
+user_0004396,org_003391,Public & Societal Benefit
+user_0004471,org_003871,Religion
+user_0004471,org_001157,Environment & Animals
+user_0004471,org_003116,Public & Societal Benefit
+user_0004554,org_002377,Human Services
+user_0004554,org_000975,Education
+user_0004554,org_000597,Education
+user_0004554,org_000926,Education
+user_0004554,org_000761,Education
+user_0004587,org_004597,Other / Unknown
+user_0004587,org_000352,"Arts, Culture & Humanities"
+user_0004587,org_004673,Other / Unknown
+user_0004587,org_000262,"Arts, Culture & Humanities"
+user_0004587,org_000072,"Arts, Culture & Humanities"
+user_0004589,org_003108,Public & Societal Benefit
+user_0004589,org_002436,Human Services
+user_0004589,org_002851,International
+user_0004589,org_002089,Human Services
+user_0004589,org_002404,Human Services
+user_0004633,org_000334,"Arts, Culture & Humanities"
+user_0004633,org_000474,"Arts, Culture & Humanities"
+user_0004633,org_000526,Education
+user_0004702,org_003181,Public & Societal Benefit
+user_0004746,org_000451,"Arts, Culture & Humanities"
+user_0004746,org_000025,"Arts, Culture & Humanities"
+user_0004766,org_004417,Mutual & Membership Benefit
+user_0004766,org_004005,Mutual & Membership Benefit
+user_0004799,org_002864,International
+user_0004799,org_002775,International
+user_0004824,org_003824,Religion
+user_0004824,org_000731,Education
+user_0004824,org_004112,Mutual & Membership Benefit
+user_0004852,org_000723,Education
+user_0004852,org_001431,Environment & Animals
+user_0004852,org_002612,International
+user_0004891,org_003351,Public & Societal Benefit
+user_0004891,org_001852,Health
+user_0004891,org_003361,Public & Societal Benefit
+user_0004897,org_004702,Other / Unknown
+user_0005011,org_002428,Human Services
+user_0005011,org_001246,Environment & Animals
+user_0005036,org_004274,Mutual & Membership Benefit
+user_0005036,org_004247,Mutual & Membership Benefit
+user_0005036,org_001807,Health
+user_0005036,org_002746,International
+user_0005044,org_003407,Public & Societal Benefit
+user_0005044,org_002299,Human Services
+user_0005044,org_002037,Human Services
+user_0005044,org_001340,Environment & Animals
+user_0005044,org_002108,Human Services
+user_0005090,org_002148,Human Services
+user_0005090,org_002420,Human Services
+user_0005090,org_004393,Mutual & Membership Benefit
+user_0005095,org_002059,Human Services
+user_0005095,org_002904,International
+user_0005095,org_002368,Human Services
+user_0005095,org_002360,Human Services
+user_0005106,org_001239,Environment & Animals
+user_0005297,org_004112,Mutual & Membership Benefit
+user_0005297,org_002442,Human Services
+user_0005297,org_002360,Human Services
+user_0005297,org_002118,Human Services
+user_0005334,org_003364,Public & Societal Benefit
+user_0005334,org_003329,Public & Societal Benefit
+user_0005334,org_000556,Education
+user_0005334,org_003380,Public & Societal Benefit
+user_0005334,org_002755,International
+user_0005341,org_000182,"Arts, Culture & Humanities"
+user_0005341,org_004864,Other / Unknown
+user_0005341,org_001231,Environment & Animals
+user_0005358,org_000192,"Arts, Culture & Humanities"
+user_0005358,org_004289,Mutual & Membership Benefit
+user_0005358,org_000037,"Arts, Culture & Humanities"
+user_0005358,org_004084,Mutual & Membership Benefit
+user_0005412,org_003246,Public & Societal Benefit
+user_0005412,org_003227,Public & Societal Benefit
+user_0005412,org_000747,Education
+user_0005412,org_000812,Education
+user_0005412,org_002692,International
+user_0005630,org_000542,Education
+user_0005630,org_000810,Education
+user_0005630,org_004560,Other / Unknown
+user_0005630,org_001094,Environment & Animals
+user_0005630,org_000798,Education
+user_0005645,org_002248,Human Services
+user_0005645,org_002523,International
+user_0005645,org_004787,Other / Unknown
+user_0005645,org_002794,International
+user_0005645,org_004519,Other / Unknown
+user_0005650,org_002455,Human Services
+user_0005650,org_003245,Public & Societal Benefit
+user_0005650,org_003431,Public & Societal Benefit
+user_0005650,org_003158,Public & Societal Benefit
+user_0005717,org_001869,Health
+user_0005717,org_001734,Health
+user_0005717,org_001856,Health
+user_0005795,org_000275,"Arts, Culture & Humanities"
+user_0005836,org_000144,"Arts, Culture & Humanities"
+user_0005846,org_001055,Environment & Animals
+user_0005846,org_004089,Mutual & Membership Benefit
+user_0005875,org_002194,Human Services
+user_0005875,org_002729,International
+user_0005875,org_002365,Human Services
+user_0005935,org_004542,Other / Unknown
+user_0005944,org_004538,Other / Unknown
+user_0006121,org_002490,Human Services
+user_0006121,org_003517,Religion
+user_0006121,org_002940,International
+user_0006123,org_000658,Education
+user_0006123,org_000936,Education
+user_0006123,org_002614,International
+user_0006123,org_002623,International
+user_0006123,org_002836,International
+user_0006164,org_002229,Human Services
+user_0006164,org_002739,International
+user_0006164,org_002437,Human Services
+user_0006164,org_002794,International
+user_0006206,org_002817,International
+user_0006226,org_004916,Other / Unknown
+user_0006226,org_000851,Education
+user_0006360,org_003025,Public & Societal Benefit
+user_0006360,org_001247,Environment & Animals
+user_0006378,org_002772,International
+user_0006378,org_000560,Education
+user_0006385,org_002208,Human Services
+user_0006385,org_002356,Human Services
+user_0006390,org_001431,Environment & Animals
+user_0006390,org_004610,Other / Unknown
+user_0006390,org_002796,International
+user_0006476,org_001753,Health
+user_0006543,org_003789,Religion
+user_0006543,org_000814,Education
+user_0006543,org_003798,Religion
+user_0006543,org_000947,Education
+user_0006623,org_002110,Human Services
+user_0006623,org_000069,"Arts, Culture & Humanities"
+user_0006623,org_004805,Other / Unknown
+user_0006623,org_004278,Mutual & Membership Benefit
+user_0006637,org_002478,Human Services
+user_0006637,org_001489,Environment & Animals
+user_0006800,org_000223,"Arts, Culture & Humanities"
+user_0006800,org_003150,Public & Societal Benefit
+user_0006819,org_004816,Other / Unknown
+user_0006819,org_004954,Other / Unknown
+user_0006819,org_000647,Education
+user_0006826,org_001033,Environment & Animals
+user_0006826,org_002505,International
+user_0006832,org_001137,Environment & Animals
+user_0006832,org_002037,Human Services
+user_0006832,org_004619,Other / Unknown
+user_0006832,org_000489,"Arts, Culture & Humanities"
+user_0006835,org_004817,Other / Unknown
+user_0006835,org_003444,Public & Societal Benefit
+user_0006872,org_001453,Environment & Animals
+user_0006887,org_004744,Other / Unknown
+user_0006887,org_004744,Other / Unknown
+user_0006887,org_001104,Environment & Animals
+user_0006887,org_001481,Environment & Animals
+user_0006982,org_004780,Other / Unknown
+user_0006982,org_004692,Other / Unknown
+user_0006982,org_004908,Other / Unknown
+user_0007012,org_004374,Mutual & Membership Benefit
+user_0007012,org_004179,Mutual & Membership Benefit
+user_0007012,org_000297,"Arts, Culture & Humanities"
+user_0007012,org_000294,"Arts, Culture & Humanities"
+user_0007013,org_004346,Mutual & Membership Benefit
+user_0007013,org_000789,Education
+user_0007013,org_000566,Education
+user_0007013,org_001077,Environment & Animals
+user_0007013,org_000502,Education
+user_0007060,org_002433,Human Services
+user_0007060,org_002150,Human Services
+user_0007060,org_002112,Human Services
+user_0007069,org_004070,Mutual & Membership Benefit
+user_0007069,org_000569,Education
+user_0007080,org_002090,Human Services
+user_0007080,org_002382,Human Services
+user_0007080,org_002238,Human Services
+user_0007176,org_004312,Mutual & Membership Benefit
+user_0007176,org_004129,Mutual & Membership Benefit
+user_0007176,org_004481,Mutual & Membership Benefit
+user_0007202,org_001147,Environment & Animals
+user_0007214,org_002093,Human Services
+user_0007214,org_003072,Public & Societal Benefit
+user_0007214,org_003126,Public & Societal Benefit
+user_0007238,org_003696,Religion
+user_0007326,org_000511,Education
+user_0007343,org_004199,Mutual & Membership Benefit
+user_0007343,org_003789,Religion
+user_0007343,org_000891,Education
+user_0007343,org_001711,Health
+user_0007359,org_004755,Other / Unknown
+user_0007359,org_004597,Other / Unknown
+user_0007456,org_003977,Religion
+user_0007456,org_002613,International
+user_0007458,org_003810,Religion
+user_0007458,org_003610,Religion
+user_0007479,org_004297,Mutual & Membership Benefit
+user_0007524,org_000652,Education
+user_0007524,org_001563,Health
+user_0007524,org_002519,International
+user_0007524,org_003399,Public & Societal Benefit
+user_0007527,org_002886,International
+user_0007527,org_003886,Religion
+user_0007527,org_001644,Health
+user_0007624,org_000531,Education
+user_0007624,org_003861,Religion
+user_0007663,org_002797,International
+user_0007663,org_001454,Environment & Animals
+user_0007714,org_002167,Human Services
+user_0007714,org_002440,Human Services
+user_0007714,org_003895,Religion
+user_0007714,org_004271,Mutual & Membership Benefit
+user_0007723,org_002876,International
+user_0007723,org_002738,International
+user_0007797,org_000592,Education
+user_0007797,org_002515,International
+user_0007797,org_000698,Education
+user_0007797,org_004320,Mutual & Membership Benefit
+user_0007797,org_002710,International
+user_0007855,org_004821,Other / Unknown
+user_0007855,org_002593,International
+user_0007855,org_000698,Education
+user_0007855,org_002862,International
+user_0007875,org_000931,Education
+user_0007875,org_002566,International
+user_0007875,org_004905,Other / Unknown
+user_0007875,org_002146,Human Services
+user_0007876,org_000768,Education
+user_0007876,org_003245,Public & Societal Benefit
+user_0007876,org_002433,Human Services
+user_0007876,org_003442,Public & Societal Benefit
+user_0007906,org_003519,Religion
+user_0007906,org_003519,Religion
+user_0007906,org_004944,Other / Unknown
+user_0007906,org_003804,Religion
+user_0007911,org_004299,Mutual & Membership Benefit
+user_0007911,org_001774,Health
+user_0007911,org_000183,"Arts, Culture & Humanities"
+user_0007911,org_001573,Health
+user_0007911,org_003444,Public & Societal Benefit
+user_0007944,org_002321,Human Services
+user_0007944,org_002123,Human Services
+user_0007944,org_003029,Public & Societal Benefit
+user_0007964,org_003362,Public & Societal Benefit
+user_0007964,org_004072,Mutual & Membership Benefit
+user_0007964,org_003183,Public & Societal Benefit
+user_0007964,org_002613,International
+user_0007989,org_003663,Religion
+user_0007989,org_003854,Religion
+user_0007989,org_003947,Religion
+user_0007989,org_003829,Religion

@@ -1,0 +1,30 @@
+.git
+.gitignore
+.venv*/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.DS_Store
+.idea/
+.vscode/
+node_modules/
+
+# Heavy training-only assets — runtime image doesn't need them
+bench/data/
+bench/eval/
+bench/scripts/
+bench/tests/
+bench/requirements.txt
+bench/results/
+bench/README.md
+docs/
+data/
+backend/
+SPEC.md
+Makefile
+README.md
+
+# Editor + OS junk
+*.swp
+*.swo
