@@ -4,8 +4,4 @@ __pycache__/
 .venv*/
 .pytest_cache/
 .DS_Store
-bench/results/*.json
-bench/results/*.md
-bench/results/*.png
-!bench/results/.gitkeep
 bench/data/content_embeddings_*.npy
